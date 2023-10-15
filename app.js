@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const addStudentsRoute = require('./routes/add-students');
+const studentsRoute = require('./routes/crud.route');
+
 
 app.use(bodyParser.json());
-app.use('/students',addStudentsRoute);
+app.use('/students',studentsRoute);
 
 module.exports = app;

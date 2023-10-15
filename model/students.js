@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize)=>{
             type: Sequelize.STRING,
             allowNull: false
         },
-        address: {
+        email: {
             type: Sequelize.STRING,
             allowNull: false
         },
