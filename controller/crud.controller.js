@@ -1,10 +1,19 @@
+    const bcrypt = require('bcryptjs');
+
 const db = require('../utils/db.tables');
 var dbStudents = db.std;
 require('../middleware/verifyRegisteredStudents');
 
 const createStudentsInsert = async(req, res)=>{
     try{
-        await dbStudents.create(req.body);
+        const {firstname, lastname, email, password, phone} = req.body;
+        await dbStudents.create({
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            password: await bcrypt.hash(password, 5),
+            phone: phone
+        });
         res.status(201).json({Message: 'Data Inserted Successfully'});
 
     }catch(error){
